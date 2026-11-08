@@ -1,16 +1,6 @@
 package com.biblioteca.prestamos.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
 
@@ -22,8 +12,8 @@ public class Prestamo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // Un libro puede tener muchos préstamos a lo largo del tiempo
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+
+    @ManyToOne(optional = false)
     @JoinColumn(name = "libro_id", nullable = false)
     private Libro libro;
 
@@ -36,7 +26,7 @@ public class Prestamo {
     @Column(nullable = false)
     private LocalDate fechaDevolucionPrevista;
 
-    // Queda vacía mientras el libro no se devuelva
+
     private LocalDate fechaDevolucionReal;
 
     @Enumerated(EnumType.STRING)
@@ -49,39 +39,30 @@ public class Prestamo {
     public Long getId() {
         return id;
     }
-
     public void setId(Long id) {
         this.id = id;
     }
-
     public Libro getLibro() {
         return libro;
     }
-
     public void setLibro(Libro libro) {
         this.libro = libro;
     }
-
     public String getNombreLector() {
         return nombreLector;
     }
-
     public void setNombreLector(String nombreLector) {
         this.nombreLector = nombreLector;
     }
-
     public LocalDate getFechaPrestamo() {
         return fechaPrestamo;
     }
-
     public void setFechaPrestamo(LocalDate fechaPrestamo) {
         this.fechaPrestamo = fechaPrestamo;
     }
-
     public LocalDate getFechaDevolucionPrevista() {
         return fechaDevolucionPrevista;
     }
-
     public void setFechaDevolucionPrevista(LocalDate fechaDevolucionPrevista) {
         this.fechaDevolucionPrevista = fechaDevolucionPrevista;
     }
