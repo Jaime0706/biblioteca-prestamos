@@ -1,0 +1,4 @@
+spring.datasource.url=jdbc:postgresql://localhost:5432/biblioteca_db
+spring.datasource.username=postgres
+spring.datasource.password=UMG_41$26
+server.port=8081
