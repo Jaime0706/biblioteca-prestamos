@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca Comunitaria - Préstamos</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<header class="topbar">
+    <div class="wrap">
+        <h1>📚 Biblioteca Comunitaria</h1>
+        <nav class="tabs" role="tablist">
+            <button class="tab active" data-tab="resumen" role="tab">Resumen</button>
+            <button class="tab" data-tab="libros" role="tab">Libros</button>
+            <button class="tab" data-tab="prestamos" role="tab">Préstamos</button>
+        </nav>
+    </div>
+</header>
+
+<main class="wrap">
+
+    <div id="mensaje" class="mensaje" role="alert" hidden></div>
+
+    <!-- ============ RESUMEN ============ -->
+    <section id="tab-resumen" class="panel">
+        <h2>Resumen de la biblioteca</h2>
+        <div id="indicadores" class="cards"></div>
+    </section>
+
+    <!-- ============ LIBROS ============ -->
+    <section id="tab-libros" class="panel" hidden>
+        <h2>Libros</h2>
+
+        <form id="form-libro" class="card form" novalidate>
+            <h3 id="libro-form-titulo">Registrar libro</h3>
+            <input type="hidden" id="libro-id">
+            <div class="grid">
+                <label>Título
+                    <input type="text" id="libro-titulo" maxlength="150">
+                    <small class="field-error" id="err-titulo"></small>
+                </label>
+                <label>Autor
+                    <input type="text" id="libro-autor" maxlength="100">
+                    <small class="field-error" id="err-autor"></small>
+                </label>
+                <label>ISBN
+                    <input type="text" id="libro-isbn" maxlength="20" placeholder="978-0307474728">
+                    <small class="field-error" id="err-isbn"></small>
+                </label>
+            </div>
+            <div class="actions">
+                <button type="submit" class="btn primary" id="libro-guardar">Guardar libro</button>
+                <button type="button" class="btn" id="libro-cancelar" hidden>Cancelar edición</button>
+            </div>
+        </form>
+
+        <div class="toolbar">
+            <button class="btn filter active" data-filtro-libros="todos">Todos</button>
+            <button class="btn filter" data-filtro-libros="disponibles">Disponibles</button>
+            <form id="form-buscar-libro" class="inline">
+                <input type="search" id="buscar-libro" placeholder="Buscar por título o autor">
+                <button type="submit" class="btn">Buscar</button>
+            </form>
+        </div>
+
+        <div class="table-wrap">
+            <table>
+                <thead>
+                <tr><th>ID</th><th>Título</th><th>Autor</th><th>ISBN</th><th>Estado</th><th>Acciones</th></tr>
+                </thead>
+                <tbody id="tabla-libros"></tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- ============ PRÉSTAMOS ============ -->
+    <section id="tab-prestamos" class="panel" hidden>
+        <h2>Préstamos</h2>
+
+        <form id="form-prestamo" class="card form" novalidate>
+            <h3 id="prestamo-form-titulo">Registrar préstamo</h3>
+            <input type="hidden" id="prestamo-id">
+            <div class="grid">
+                <label>Libro
+                    <select id="prestamo-libro"></select>
+                    <input type="text" id="prestamo-libro-texto" readonly hidden>
+                    <small class="field-error" id="err-libroId"></small>
+                </label>
+                <label>Nombre del lector
+                    <input type="text" id="prestamo-lector" maxlength="100">
+                    <small class="field-error" id="err-nombreLector"></small>
+                </label>
+                <label>Días de plazo (1 a 30)
+                    <input type="number" id="prestamo-dias" value="7" min="1" max="30">
+                    <small class="field-error" id="err-diasPlazo"></small>
+                </label>
+            </div>
+            <div class="actions">
+                <button type="submit" class="btn primary" id="prestamo-guardar">Registrar préstamo</button>
+                <button type="button" class="btn" id="prestamo-cancelar" hidden>Cancelar edición</button>
+            </div>
+        </form>
+
+        <div class="toolbar">
+            <button class="btn filter active" data-filtro-prestamos="todos">Todos</button>
+            <button class="btn filter" data-filtro-prestamos="activos">Activos</button>
+            <button class="btn filter" data-filtro-prestamos="vencidos">Vencidos</button>
+            <form id="form-buscar-lector" class="inline">
+                <input type="search" id="buscar-lector" placeholder="Buscar por lector">
+                <button type="submit" class="btn">Buscar</button>
+            </form>
+        </div>
+
+        <div class="table-wrap">
+            <table>
+                <thead>
+                <tr><th>ID</th><th>Libro</th><th>Lector</th><th>Préstamo</th><th>Devolución prevista</th><th>Devuelto</th><th>Estado</th><th>Acciones</th></tr>
+                </thead>
+                <tbody id="tabla-prestamos"></tbody>
+            </table>
+        </div>
+    </section>
+</main>
+
+<script src="js/app.js"></script>
+</body>
+</html>
