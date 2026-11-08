@@ -1,0 +1,18 @@
+erDiagram
+    LIBROS ||--o{ PRESTAMOS : "tiene"
+    LIBROS {
+        bigint id PK
+        varchar titulo "NOT NULL, max 150"
+        varchar autor "NOT NULL, max 100"
+        varchar isbn "NOT NULL, UNIQUE, max 20"
+        boolean activo "NOT NULL, default true"
+    }
+    PRESTAMOS {
+        bigint id PK
+        bigint libro_id FK "NOT NULL"
+        varchar nombre_lector "NOT NULL, max 100"
+        date fecha_prestamo "NOT NULL"
+        date fecha_devolucion_prevista "NOT NULL"
+        date fecha_devolucion_real "NULL hasta devolver"
+        varchar estado "ACTIVO | DEVUELTO"
+    }
