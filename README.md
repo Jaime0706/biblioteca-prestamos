@@ -3,7 +3,7 @@
 | | |
 |---|---|
 | **Estudiante** | Jaime Alejandro Monzón Contreras |
-| **Carné** | _[COMPLETAR: número de carné]_ |
+| **Carné** | 9941-24-11049 |
 | **Curso** | Programación II — Universidad Mariano Gálvez de Guatemala (UMG) |
 | **Proyecto asignado** | PF-01 — Préstamos de una biblioteca comunitaria |
 
